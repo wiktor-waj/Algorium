@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/doc/algorium_logo.png" />
+  <img src="/doc/resources/algorium_logo.png" />
 </div>
 
 # Algorium
