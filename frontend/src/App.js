@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
-import { algorium_theme } from 'theme';
+import { algoriumTheme } from 'theme';
 
 function App() {
   return (
