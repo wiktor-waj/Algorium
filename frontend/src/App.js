@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
-import { algorium_theme } from 'theme';
+import { algoriumTheme } from 'theme';
 
 function App() {
   return (
-    <ThemeProvider theme={algorium_theme}>
+    <ThemeProvider theme={algoriumTheme}>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
