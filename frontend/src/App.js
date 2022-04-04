@@ -5,7 +5,7 @@ import { algoriumTheme } from 'theme';
 
 function App() {
   return (
-    <ThemeProvider theme={algorium_theme}>
+    <ThemeProvider theme={algoriumTheme}>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
