@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-export const algorium_theme = createTheme({
+export const algoriumTheme = createTheme({
     palette: {
       primary: {
         light: '#97a7eb',
