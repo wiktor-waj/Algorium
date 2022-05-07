@@ -11,10 +11,8 @@ import { useTheme } from "@emotion/react";
 import Grid from '@mui/material/Grid';
 import { margin, styled } from "@mui/system";
 import { display } from "@mui/system";
-
-function AlgoriumTheme() {
-    return useTheme();
-}
+import AlgPreview from "./algpreview";
+import { ThemeProvider } from "@mui/material/styles";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#2a2b2c' : '#f0f0f0',
@@ -24,6 +22,13 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     height: "40px",
+}));
+
+const TabPanelThemed = styled(TabPanel)(({ theme }) => ({
+    backgroundColor: theme.palette.background.default,
+    zIndex: -1,
+    marginTop: 15,
+    padding: 20,
 }));
 
 export default class MainMenu extends React.Component {
@@ -42,6 +47,12 @@ export default class MainMenu extends React.Component {
     }
 
     render() {
+        this.tabComponents = [
+            { id: "0", c: <AlgPreview algActive={this.props.algActive} setalgActive={this.props.setalgActive}></AlgPreview> },
+            { id: "1", c: <div>x</div> },
+            { id: "2", c: <div>y</div> }
+        ];
+
         return <>
             <TabContext value={this.props.tabID}>
                 <Paper elevation={3}>
@@ -69,9 +80,9 @@ export default class MainMenu extends React.Component {
                     </Grid>
                 </Paper>
 
-                <TabPanel value="0">Strona 0</TabPanel>
-                <TabPanel value="1">Strona 1</TabPanel>
-                <TabPanel value="2">Strona 2</TabPanel>
+                {this.tabComponents.map((tab) => {
+                    return <TabPanelThemed value={tab.id}>{tab.c}</TabPanelThemed>
+                })}
             </TabContext>
         </>
     }

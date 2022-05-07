@@ -7,6 +7,7 @@ import AllPage from './components/allpage';
 function App() {
   const [toggleDark, settoggleDark] = useState(false);
   const [tabID, settabID] = useState("0");
+  const [algActive, setalgActive] = useState(<div></div>);
 
   const algoriumTheme = createTheme({
     palette: {
@@ -38,7 +39,12 @@ function App() {
 
   return (
     <ThemeProvider theme={algoriumTheme}>
-      <AllPage toggleDark={toggleDark} settoggleDark={settoggleDark} tabID={tabID} settabID={settabID}></AllPage>
+      <div style={{ background: algoriumTheme.palette.background.default }}>
+        <AllPage
+          toggleDark={toggleDark} settoggleDark={settoggleDark} tabID={tabID} settabID={settabID}
+          algActive={algActive} setalgActive={setalgActive}
+        ></AllPage>
+      </div>
     </ThemeProvider>
   );
 }
