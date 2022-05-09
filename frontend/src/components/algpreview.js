@@ -3,14 +3,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Divider, IconButton, Paper, Stack, Tab, Tabs, TextField, Tooltip, Typography, withStyles } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Divider, IconButton, Paper, Stack,TextField, Tooltip, Typography } from "@mui/material";
 import { PlayCircle as PlayCircleIcon, StopCircle as StopCircleIcon, RotateLeft as ResetIcon, NotStarted as NotStartedIcon, AddCircle as AddCircleIcon, ExpandMore as ExpandMoreIcon } from "@mui/icons-material";
-import { TabContext, TabList, TabPanel } from '@mui/lab';
-import ColorModeSwitch from "./colormode";
-import { useTheme } from "@emotion/react";
-import Grid from '@mui/material/Grid';
-import { margin, styled } from "@mui/system";
-import { display } from "@mui/system";
 
 export default class AlgPreview extends React.Component {
     render() {
