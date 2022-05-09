@@ -1,12 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AllPage from './components/allpage';
 
+import {BrowserRouter as Router} from 'react-router-dom';
+
 function App() {
   const [toggleDark, settoggleDark] = useState(false);
   const [tabID, settabID] = useState("0");
+  const [algActive, setalgActive] = useState(<div></div>);
 
   const algoriumTheme = createTheme({
     palette: {
@@ -37,9 +39,17 @@ function App() {
   }
 
   return (
+
     <ThemeProvider theme={algoriumTheme}>
-      <AllPage toggleDark={toggleDark} settoggleDark={settoggleDark} tabID={tabID} settabID={settabID}></AllPage>
-    </ThemeProvider>
+      <Router basename={process.env.PUBLIC_URL}>
+      <div style={{ background: algoriumTheme.palette.background.default }}>
+          <AllPage
+          toggleDark={toggleDark} settoggleDark={settoggleDark} tabID={tabID} settabID={settabID}
+          algActive={algActive} setalgActive={setalgActive}
+        ></AllPage>
+      </div>
+    </Router>
+    </ThemeProvider >
   );
 }
 
