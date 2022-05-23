@@ -7,7 +7,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   const [toggleDark, settoggleDark] = useState(false);
-  const [tabID, settabID] = useState(0);
+  const [tabID, settabID] = useState("0");
   const [algActive, setalgActive] = useState(<div></div>);
 
   const algoriumTheme = createTheme({
