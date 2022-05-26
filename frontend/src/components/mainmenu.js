@@ -12,9 +12,7 @@ import {
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import ColorModeSwitch from './colormode';
 import Grid from '@mui/material/Grid';
-import { SortView } from './SortView';
-import { margin, styled } from '@mui/system';
-import { display } from '@mui/system';
+import { styled } from '@mui/system';
 import AlgPreview from './algpreview';
 import { Link } from 'react-router-dom';
 
@@ -44,11 +42,12 @@ export default class MainMenu extends React.Component {
 	handleTabChange = (event, newValue) => {
 		this.props.settabID(newValue);
 	};
+	componentDidMount() {
+		this.props.settabID(this.props.pageID);
+	}
 
 	render() {
-		this.props.settabID(this.props.pageID);
 		let tabID = `${this.props.tabID}`;
-
 		return (
 			<>
 				<TabContext value={tabID}>
