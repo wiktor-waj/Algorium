@@ -1,30 +1,25 @@
 import React from 'react';
-import MainMenu from './mainmenu';
+import MainMenu from './MainMenu';
 import {
 	BrowserRouter as Router,
 	Route,
 	Routes as Switch,
-	useLocation,
 } from 'react-router-dom';
-import { TabContext } from '@mui/lab';
-// import AlgPreview from "./algpreview";
-import AlgPreview, { AlgPreviewFn } from './AlgPreviewFn';
+import { AlgoPreview } from './AlgoPreview';
 
 export default class AllPage extends React.Component {
 	getMainMenu(id) {
-		this.props.settabID(id);
-
 		let pg = <div></div>;
-
 		switch (id) {
 			case 0:
 				break;
 			case 1:
-				pg = <AlgPreviewFn />;
+				pg = <AlgoPreview />;
 				break;
 			case 2:
 				break;
 			default:
+				break;
 		}
 
 		return (

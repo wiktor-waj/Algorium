@@ -1,11 +1,11 @@
 import './App.css';
 import React, { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AllPage from './components/allpage';
+import AllPage from './components/AllPage';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
-function App() {
+const App = () => {
 	const [toggleDark, settoggleDark] = useState(false);
 	const [tabID, settabID] = useState(0);
 	const [algActive, setalgActive] = useState(<div></div>);
@@ -26,7 +26,7 @@ function App() {
 		},
 	});
 
-	if (algoriumTheme.palette.mode == 'light') {
+	if (algoriumTheme.palette.mode === 'light') {
 		algoriumTheme.palette.background = {
 			default: '#fff',
 			paper: '#f0f0f0',
@@ -58,6 +58,6 @@ function App() {
 			</Router>
 		</ThemeProvider>
 	);
-}
+};
 
 export default App;
