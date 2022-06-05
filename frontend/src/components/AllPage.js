@@ -5,7 +5,7 @@ import {
 	Route,
 	Routes as Switch,
 } from 'react-router-dom';
-import { AlgoPreview } from './AlgoPreview';
+import { ListModules } from './ListModules';
 
 export default class AllPage extends React.Component {
 	getMainMenu(id) {
@@ -14,7 +14,7 @@ export default class AllPage extends React.Component {
 			case 0:
 				break;
 			case 1:
-				pg = <AlgoPreview />;
+				pg = <ListModules />;
 				break;
 			case 2:
 				break;
@@ -38,21 +38,15 @@ export default class AllPage extends React.Component {
 
 	render() {
 		return (
-			<>
-				<Switch>
-					<Route exact path='/' element={this.getMainMenu(0)}></Route>
-					<Route
-						exact
-						path='/moduly'
-						element={this.getMainMenu(1)}
-					></Route>
-					<Route
-						exact
-						path='/info'
-						element={this.getMainMenu(2)}
-					></Route>
-				</Switch>
-			</>
+			<Switch>
+				<Route exact path='/' element={this.getMainMenu(0)}></Route>
+				<Route
+					exact
+					path='/moduly'
+					element={this.getMainMenu(1)}
+				></Route>
+				<Route exact path='/info' element={this.getMainMenu(2)}></Route>
+			</Switch>
 		);
 	}
 }

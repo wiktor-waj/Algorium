@@ -31,10 +31,18 @@ const NumberColumn = styled(motion.div)((props) => ({
 export const BubbleSort = ({ numbers }) => {
 	const constraintsRef = React.useRef(null);
 
+	const maxHeight = Math.max(...numbers.map((number) => number.value));
+
 	return (
 		<AlgorithmView>
 			<Container ref={constraintsRef}>
-				{numbers.map((n, i) => {
+				{numbers.map((n, _) => {
+					let multiply = 100;
+					let divider = 10;
+					if (maxHeight > 10) {
+						multiply = 10;
+						divider = 10;
+					}
 					return (
 						<NumberColumn
 							key={n.id}
@@ -46,7 +54,7 @@ export const BubbleSort = ({ numbers }) => {
 								stiffness: 260,
 								damping: 20,
 							}}
-							height={`${n.value * 10}px`}
+							height={`${(n.value / divider) * multiply}px`}
 							color={n.color}
 						>
 							{n.value}

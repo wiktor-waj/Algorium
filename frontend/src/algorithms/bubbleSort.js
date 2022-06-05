@@ -1,5 +1,5 @@
 export const bubbleSort = (array) => {
-	let moves = [];
+	const moves = [];
 	for (let i = 0; i < array.length - 1; ++i) {
 		for (let j = 0; j < array.length - i - 1; ++j) {
 			if (array[j] > array[j + 1]) {
@@ -9,7 +9,13 @@ export const bubbleSort = (array) => {
 				moves.push({ indexLeft: j, indexRight: j + 1, swap: false });
 			}
 		}
+		moves.push({ index: moves.length, highlightLastElement: true });
+		if (i === array.length - 2) {
+			moves.push({
+				index: moves.length - 1,
+				highlightLastElement: false,
+			});
+		}
 	}
-	console.log(array);
 	return moves;
 };

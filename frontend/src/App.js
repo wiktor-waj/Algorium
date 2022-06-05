@@ -1,14 +1,34 @@
-import './App.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AllPage from './components/AllPage';
+import { NavBar } from './components/NavBar';
+import { ListModules } from './components/ListModules';
+import { Main } from './components/Main';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AlgoPreview } from './components/algoPreview';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+const sortAlgosList = [
+	{
+		to: 'bubble-sort',
+		algoProps: {
+			title: 'Sortowanie bąbelkowe',
+			description: `Sortowanie bąbelkowe (ang. bubble sort) – prosta metoda sortowania o złożoności czasowej $$O(n^{2})$$ i pamięciowej $$O ( 1 )$$. 
 
+		Polega na porównywaniu dwóch kolejnych elementów i zamianie ich kolejności, jeżeli zaburza ona porządek, w jakim się sortuje tablicę. Sortowanie kończy się, gdy podczas kolejnego przejścia nie dokonano żadnej zmiany.`,
+			type: 'bubbleSort',
+		},
+	},
+
+	{
+		to: 'merge-sort',
+		algoProps: {
+			title: 'Sortowanie przez scalanie',
+			description: 'brak',
+			type: 'mergeSort',
+		},
+	},
+];
 const App = () => {
-	const [toggleDark, settoggleDark] = useState(false);
-	const [tabID, settabID] = useState(0);
-	const [algActive, setalgActive] = useState(<div></div>);
+	const [toggleDark, setToggleDark] = React.useState(false);
 
 	const algoriumTheme = createTheme({
 		palette: {
@@ -40,21 +60,47 @@ const App = () => {
 
 	return (
 		<ThemeProvider theme={algoriumTheme}>
-			<Router basename={process.env.PUBLIC_URL}>
-				<div
-					style={{
-						background: algoriumTheme.palette.background.default,
-					}}
-				>
-					<AllPage
-						toggleDark={toggleDark}
-						settoggleDark={settoggleDark}
-						tabID={tabID}
-						settabID={settabID}
-						algActive={algActive}
-						setalgActive={setalgActive}
-					/>
-				</div>
+			<Router>
+				<Routes>
+					<Route
+						path='/'
+						element={
+							<NavBar
+								toggleDark={toggleDark}
+								setToggleDark={setToggleDark}
+							/>
+						}
+					>
+						<Route path='/strona-glowna' element={<Main />} />
+						<Route path='/moduly' element={<ListModules />}>
+							{/* {sortAlgosList.map((algo) => {
+								return (
+									<Route
+										key={algo.to}
+										path={algo.to}
+										element={
+											<AlgoPreview {...algo.algoProps} />
+										}
+									/>
+								);
+							})} */}
+							<Route
+								path='bubble-sort'
+								element={
+									<AlgoPreview
+										{...sortAlgosList[0].algoProps}
+									/>
+								}
+							/>
+
+							<Route
+								path='merge-sort'
+								element={<div>wariat </div>}
+							/>
+						</Route>
+						<Route path='/info' element={<div>info</div>} />
+					</Route>
+				</Routes>
 			</Router>
 		</ThemeProvider>
 	);

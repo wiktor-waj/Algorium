@@ -5,6 +5,6 @@ export const useAlgoSort = (typeAlgoSort) => {
 		case 'bubbleSort':
 			return useBubbleSort;
 		default:
-			return () => null;
+			return () => <div>ni ma</div>;
 	}
 };
