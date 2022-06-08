@@ -95,7 +95,9 @@ const App = () => {
 
 							<Route
 								path='merge-sort'
-								element={<div>wariat </div>}
+								element={	<AlgoPreview
+									{...sortAlgosList[1].algoProps}
+								/>}
 							/>
 						</Route>
 						<Route path='/info' element={<div>info</div>} />
