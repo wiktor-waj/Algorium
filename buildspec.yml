@@ -6,8 +6,6 @@ phases:
       - echo "Installing nodejs..."
       - curl -fsSL https://deb.nodesource.com/setup_current.x |  bash -
       - apt install -y nodejs
-      - echo "Installing npm..."
-      - apt install npm
   pre_build:
     commands:
       - echo "Installing nodejs dependencies"
