@@ -42,7 +42,7 @@ export const MergeSort = ({ numbers }) => {
 						<NumberColumn
 							key={uuidv4()}
 							layout
-							initial={{ scale: 0 }}
+							// initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
 							transition={{
 								type: 'spring',

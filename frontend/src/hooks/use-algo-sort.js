@@ -4,10 +4,10 @@ import {useMergeSort} from '../components/sort/mergeSort'
 export const useAlgoSort = (typeAlgoSort) => {
 	switch (typeAlgoSort) {
 		case 'bubbleSort':
+			return useBubbleSort;
+		case 'mergeSort':
 			return useMergeSort;
-		// case 'mergeSort':
-		// 	return useMergeSort;
 		default:
-			return () => null;
+			return () => <div>ni ma</div>;
 	}
 };

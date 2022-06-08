@@ -22,7 +22,6 @@ import {
 	ExpandMore as ExpandMoreIcon,
 } from '@mui/icons-material';
 import { useAlgoSort } from '../hooks';
-import { BubbleSort } from './sort/bubbleSort';
 
 const Container = styled(Paper)({
 	marginX: '5%',
@@ -48,7 +47,7 @@ const AlgoWindow = styled('div')({
 export const AlgoPreview = () => {
 	const inputNumbersEl = React.useRef(null);
 	const { step, play, AlgoVisual, algoVisualProps } =
-		useAlgoSort('bubbleSort')();
+		useAlgoSort('mergeSort')();
 
 	const handlePlay = () => {};
 	const handleStop = () => {};
