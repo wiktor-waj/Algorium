@@ -1,70 +1,37 @@
-import React  from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { mergeSort } from '../../../algorithms';
 import { MergeSort } from './MergeSort';
 
-const useVisualNumbers = (defaultNumbersLength) => {
+const useRandomNumbers = () => {
 	const [numbers, setNumbers] = React.useState([]);
-	const [defaultNumbers, setDefaultNumbers] = React.useState([]);
-
-	const makeRandomNumbers = (numbersLength) => {
+	React.useEffect(() => {
 		const _numbers = [];
-		for (let i = 0; i < numbersLength; i++) {
+		for (let i = 0; i < 5; i++) {
 			_numbers.push({
 				id: uuidv4(),
 				value: Math.floor(Math.random() * 10),
-				color: colors.default,
+				color: '#000',
+				isSorting: false,
+				isSorted: false,
 			});
 		}
 		setNumbers(_numbers);
-		setDefaultNumbers(deepClone(_numbers));
-	};
+	}, []);
 
-	const makeNumberObj = (value) => {
-		return {
-			id: uuidv4(),
-			value,
-			color: colors.default,
-		};
-	};
-
-	const updateNumbersByListValues = (listNumbers) => {
-		const updatedArray = [];
-		listNumbers.forEach((number) => {
-			updatedArray.push(makeNumberObj(number));
-		});
-		setNumbers(updatedArray);
-		setDefaultNumbers(deepClone(updatedArray));
-	};
-
-	React.useEffect(() => {
-		makeRandomNumbers(defaultNumbersLength);
-	}, [defaultNumbersLength]);
-
-	return {
-		numbers,
-		setNumbers,
-		makeRandomNumbers,
-		defaultNumbers,
-		updateNumbersByListValues,
-	};
+	return [numbers, setNumbers];
 };
 
-const defaultNumbersLength = 5;
-
 export const useMergeSort = () => {
-	const {
-		numbers,
-		setNumbers,
-		makeRandomNumbers,
-		defaultNumbers,
-		updateNumbersByListValues,
-	} = useVisualNumbers(defaultNumbersLength);
+	const [numbers, setNumbers] = useRandomNumbers();
 	const [moves, setMoves] = React.useState([]);
 	const [isPlayed, setIsPlayed] = React.useState(false);
 	const [currentIndex, setCurrentIndex] = React.useState(0);
 	let prevNum = numbers;
 
+	// useEffect(() => {    // Update the document title using the browser API   
+	// 	setMoves(getListMoves());
+	// 	});
 
 	const getListMoves = () => {
 		const tempArr = numbers.map((num) => num.value);
@@ -119,43 +86,19 @@ export const useMergeSort = () => {
 		}
 	};
 	const play = () => {
-		setIsPlayed(true);
+		if (isPlayed) {
+			setIsPlayed(false);
+		} else {
+			setIsPlayed(true);
+		}
 	};
 
-	const stop = () => {
-		setIsPlayed(false);
-	};
-
-const makeDefaultValues = () => {
-		setCurrentIndex(0);
-		setHighlight(true);
-		setHighlightIndex(null);
-		setMoves([]);
-	};
-
-	const reset = () => {
-		makeDefaultValues();
-		setNumbers(defaultNumbers);
-	};
-
-	const random = (numbersLength) => {
-		makeDefaultValues();
-		makeRandomNumbers(numbersLength);
-	};
-
-	const addNumbers = (listNumbers) => {
-		makeDefaultValues();
-		updateNumbersByListValues(listNumbers);
-	};
+	const reset = () => { };
 
 	return {
 		step,
 		play,
-		stop,
-		isPlayed,
 		reset,
-		addNumbers,
-		random,
 		AlgoVisual,
 		algoVisualProps: {
 			numbers,
