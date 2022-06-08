@@ -9,10 +9,14 @@ phases:
   pre_build:
     commands:
       - echo "Installing nodejs dependencies"
+      - pwd
+      - cd frontend
+      - pwd
       - npm install
   build:
     commands:
       - echo "Testing..."
+      - pwd
       - npm test
       - echo "Building..."
       - npm run build
