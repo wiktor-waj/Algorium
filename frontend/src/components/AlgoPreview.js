@@ -1,4 +1,5 @@
 import React from 'react';
+import Latex from 'react-latex';
 import { styled } from '@mui/material';
 import {
 	Accordion,
@@ -20,8 +21,10 @@ import {
 	NotStarted as NotStartedIcon,
 	AddCircle as AddCircleIcon,
 	ExpandMore as ExpandMoreIcon,
+	Shuffle as ShuffleIcon,
 } from '@mui/icons-material';
-import { useAlgoSort } from '../hooks';
+import { useAlgoSort } from '../../hooks';
+import { useAlgoPreviewForm } from '.';
 
 const Container = styled(Paper)({
 	marginX: '5%',
@@ -44,18 +47,54 @@ const AlgoWindow = styled('div')({
 	background: 'white',
 });
 
-export const AlgoPreview = () => {
-	const inputNumbersEl = React.useRef(null);
-	const { step, play, AlgoVisual, algoVisualProps } =
-		useAlgoSort('mergeSort')();
+const InputContainer = styled('div')({
+	display: 'flex',
+	flexDirection: 'column',
+	justifyItems: 'center',
+	alignItems: 'center',
+	gap: '.5em',
+	'& > div': {
+		display: 'flex',
+		justifyItems: 'center',
+		alignItems: 'center',
+	},
+});
 
-	const handlePlay = () => {};
-	const handleStop = () => {};
+export const AlgoPreview = ({ title, description, type }) => {
+	const {
+		inputNumbersEl,
+		inputNumbersListError,
+		handleAddNumbersValidation,
+		inputNumbersLengthEl,
+		inputNumbersLengthError,
+		handleRandomValidation,
+	} = useAlgoPreviewForm();
+
+	const {
+		step,
+		play,
+		stop,
+		isPlayed,
+		reset,
+		addNumbers,
+		random,
+		AlgoVisual,
+		algoVisualProps,
+	} = useAlgoSort(type)();
+
+	const handlePlay = () => {
+		play();
+	};
+
+	const handleStop = () => {
+		stop();
+	};
+
 	const handlePlayStop = () => {
-		if (play) {
-			handlePlay();
-		} else {
+		if (isPlayed) {
 			handleStop();
+		} else {
+			handlePlay();
 		}
 	};
 
@@ -64,25 +103,30 @@ export const AlgoPreview = () => {
 	};
 
 	const handleReset = () => {
-		console.log('reset');
+		reset();
 	};
 
-	const inputValidation = (input) => {};
+	const handleRandom = () => {
+		if (!inputNumbersLengthError) {
+			const inputRandom = inputNumbersLengthEl.current.value;
+			random(parseInt(inputRandom));
+		}
+	};
 
 	const handleAddNumbers = () => {
-		const inputNumbers = inputNumbersEl.current.value;
-		if (inputValidation(inputNumbers)) {
-			// const listNumbers = inputNumbers.split(/,|\s/).map(n => parseInt(n));
+		const inputNumbers = inputNumbersEl.current.value.trim();
+		if (!inputNumbersListError) {
+			const listNumbers = inputNumbers
+				.split(/,|\s/)
+				.map((n) => parseInt(n));
+			addNumbers(listNumbers);
 		}
-
-		console.log(inputNumbersEl.current.value);
-		// console.log(inputNumbersEl.current.value());
 	};
 
 	return (
 		<Container component={Box} elevation={3}>
 			<AlgoHeader variant='h5' gutterBottom align='center'>
-				Algorytm
+				{title}
 			</AlgoHeader>
 			<AlgoWindow>
 				<AlgoVisual {...algoVisualProps} />
@@ -102,10 +146,10 @@ export const AlgoPreview = () => {
 						onClick={handlePlayStop}
 						color='primary'
 					>
-						{play ? (
-							<PlayCircleIcon></PlayCircleIcon>
-						) : (
+						{isPlayed ? (
 							<StopCircleIcon></StopCircleIcon>
+						) : (
+							<PlayCircleIcon></PlayCircleIcon>
 						)}
 					</IconButton>
 				</Tooltip>
@@ -119,17 +163,47 @@ export const AlgoPreview = () => {
 						<ResetIcon />
 					</IconButton>
 				</Tooltip>
-				<Divider flexItem orientation='vertical'></Divider>
-				<TextField
-					label='Dane liczbowe'
-					size='small'
-					inputRef={inputNumbersEl}
-				/>
-				<Tooltip placement='top' title='Dodaj nowe element'>
-					<IconButton onClick={handleAddNumbers} size='large'>
-						<AddCircleIcon />
-					</IconButton>
-				</Tooltip>
+				<InputContainer>
+					<div>
+						<TextField
+							defaultValue={'5 4 3 2 1'}
+							label='Dane liczbowe'
+							size='small'
+							onChange={handleAddNumbersValidation}
+							error={inputNumbersListError}
+							inputRef={inputNumbersEl}
+						/>
+						<Tooltip placement='top' title='Dodaj nowe element'>
+							<IconButton
+								disabled={inputNumbersListError}
+								onClick={handleAddNumbers}
+								size='large'
+							>
+								<AddCircleIcon />
+							</IconButton>
+						</Tooltip>
+					</div>
+					<Divider flexItem orientation='horizontal'></Divider>
+					<div>
+						<TextField
+							defaultValue={5}
+							label='Ilość elementów'
+							size='small'
+							onChange={handleRandomValidation}
+							error={inputNumbersLengthError}
+							inputRef={inputNumbersLengthEl}
+						/>
+						<Tooltip placement='top' title='Wylosuj elementy'>
+							<IconButton
+								disabled={inputNumbersLengthError}
+								onClick={handleRandom}
+								size='large'
+							>
+								<ShuffleIcon />
+							</IconButton>
+						</Tooltip>
+					</div>
+				</InputContainer>
 			</Stack>
 
 			<Accordion>
@@ -141,7 +215,9 @@ export const AlgoPreview = () => {
 					<Typography variant='h6'>Opis algorytmu</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<Typography>Tekst</Typography>
+					<Typography>
+						<Latex>{description}</Latex>
+					</Typography>
 				</AccordionDetails>
 			</Accordion>
 		</Container>
