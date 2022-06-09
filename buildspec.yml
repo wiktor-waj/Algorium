@@ -17,9 +17,9 @@ phases:
     commands:
       - echo "Testing..."
       - pwd
-      - npm test
+      - CI=true npm test
       - echo "Building..."
-      - npm run build
+      - CI=true npm run build
 artifacts:
   files:
     - "**/*"
