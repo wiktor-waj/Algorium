@@ -136,10 +136,5 @@ export const mergeSort = (array) =>{
     moves = [];
     let n = array.length;
     Sort(arr,0, n-1 )
-    for(let i=0;i<moves.length;i++){
-        console.log(moves[i].val)
-        console.log(moves[i].side+ "  "+moves[i].left+"  <-----> "+moves[i].right)
-    
-    }
     return moves;
 }
