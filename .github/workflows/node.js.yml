@@ -28,6 +28,7 @@ jobs:
         cache: 'npm'
     - run: echo "Building and testing..."
     - run: pwd
+    - run: ls -la
     - run: cd frontend/
     - run: pwd
     - run: CI=true npm ci
