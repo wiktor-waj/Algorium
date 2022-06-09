@@ -17,7 +17,7 @@ phases:
     commands:
       - echo "Testing..."
       - pwd
-      - CI=true npm test
+        #- CI=true npm test
       - echo "Building..."
       - CI=true npm run build
 artifacts:
