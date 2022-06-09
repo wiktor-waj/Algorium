@@ -1,5 +1,4 @@
 import React from 'react';
-import { AlgoPreview } from './algoPreview/';
 import { Outlet, Link } from 'react-router-dom';
 
 export const ListModules = () => {

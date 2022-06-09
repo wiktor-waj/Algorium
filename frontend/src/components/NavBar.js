@@ -5,7 +5,7 @@ import {
 	MenuBook as MenuBookIcon,
 	Help as HelpIcon,
 } from '@mui/icons-material';
-import { TabContext, TabList, TabPanel } from '@mui/lab';
+import { TabContext, TabList } from '@mui/lab';
 import ColorModeSwitch from './ColorMode';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/system';
