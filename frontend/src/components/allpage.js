@@ -3,6 +3,7 @@ import MainMenu from "./mainmenu";
 import { BrowserRouter as Router, Route, Routes as Switch, useLocation } from 'react-router-dom';
 import { TabContext } from '@mui/lab';
 import AlgPreview from "./algpreview";
+import MainPage from "./mainpage";
 
 export default class AllPage extends React.Component {
     getMainMenu(id) {
@@ -11,7 +12,7 @@ export default class AllPage extends React.Component {
         let pg = <div></div>;
 
         switch (id) {
-            case 0: break;
+            case 0: pg = <MainPage></MainPage>; break;
             case 1: pg = <AlgPreview></AlgPreview>; break;
             case 2: break;
         }
