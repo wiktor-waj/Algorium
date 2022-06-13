@@ -27,6 +27,7 @@ const sortAlgosList = [
 		},
 	},
 ];
+
 const App = () => {
 	const [toggleDark, setToggleDark] = React.useState(false);
 
