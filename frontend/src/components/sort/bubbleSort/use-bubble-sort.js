@@ -61,7 +61,7 @@ const useVisualNumbers = (defaultNumbersLength) => {
 const defaultNumbersLength = 5;
 
 export const useBubbleSort = () => {
-	const {
+	let {
 		numbers,
 		setNumbers,
 		makeRandomNumbers,
@@ -71,25 +71,29 @@ export const useBubbleSort = () => {
 	const [moves, setMoves] = React.useState([]);
 	const [isPlayed, setIsPlayed] = React.useState(false);
 	const [currentIndex, setCurrentIndex] = React.useState(0);
+	const [previousCurrentIndex, setPreviousCurrentIndex] = React.useState(-1);
 	const [highlight, setHighlight] = React.useState(true);
 	const [highlightIndex, setHighlightIndex] = React.useState(null);
+	const playRef = React.useRef(null);
 
-	const makeMove = (move) => {
-		const arr = deepClone(numbers);
-		if (move.swap) {
-			[arr[move.indexLeft], arr[move.indexRight]] = [
-				arr[move.indexRight],
-				arr[move.indexLeft],
-			];
-		}
-		return arr;
-	};
+	const makeMove = React.useCallback(
+		(move) => {
+			const arr = deepClone(numbers);
+			if (move.swap) {
+				[arr[move.indexLeft], arr[move.indexRight]] = [
+					arr[move.indexRight],
+					arr[move.indexLeft],
+				];
+			}
+			return arr;
+		},
+		[numbers]
+	);
 
-	const indexSwap = (moves, index) =>
-		index === moves[currentIndex].indexLeft ||
-		index === moves[currentIndex].indexRight;
+	const indexSwap = (moves, index, i) =>
+		index === moves[i].indexLeft || index === moves[i].indexRight;
 
-	const step = () => {
+	const step = React.useCallback(() => {
 		if (currentIndex < moves.length) {
 			//TODO : Refactor all code in highlight if (when true)
 			if (highlight) {
@@ -104,7 +108,7 @@ export const useBubbleSort = () => {
 					if (updatedArrayNumbers[index].color !== colors.finished) {
 						updatedArrayNumbers[index].color = colors.default;
 					}
-					if (indexSwap(moves, index)) {
+					if (indexSwap(moves, index, currentIndex)) {
 						updatedArrayNumbers[index].color = colors.swapped;
 					}
 				});
@@ -115,6 +119,7 @@ export const useBubbleSort = () => {
 
 				setNumbers(updatedArrayNumbers);
 				setHighlight(true);
+				setPreviousCurrentIndex(currentIndex);
 				setCurrentIndex(currentIndex + 1);
 			}
 		} else {
@@ -122,18 +127,29 @@ export const useBubbleSort = () => {
 				setIsPlayed(false);
 			}
 		}
-	};
+	}, [
+		makeMove,
+		numbers,
+		setNumbers,
+		moves,
+		currentIndex,
+		isPlayed,
+		highlight,
+		highlightIndex,
+	]);
 
-	const play = () => {
+	const play = async () => {
 		setIsPlayed(true);
 	};
 
 	const stop = () => {
 		setIsPlayed(false);
+		clearInterval(playRef.current);
 	};
 
 	const makeDefaultValues = () => {
 		setCurrentIndex(0);
+		setPreviousCurrentIndex(-1);
 		setHighlight(true);
 		setHighlightIndex(null);
 		setMoves([]);
@@ -159,6 +175,13 @@ export const useBubbleSort = () => {
 		const moves = bubbleSort(tempArray);
 		return moves;
 	}, [numbers]);
+
+	React.useEffect(() => {
+		if (isPlayed && currentIndex !== previousCurrentIndex) {
+			clearTimeout(playRef.current);
+			playRef.current = setTimeout(() => step(), 500);
+		}
+	}, [isPlayed, currentIndex, step, previousCurrentIndex]);
 
 	React.useEffect(() => {
 		if (moves.length === 0) {
