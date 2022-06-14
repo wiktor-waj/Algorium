@@ -1,32 +1,12 @@
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { NavBar } from './components/NavBar';
-import { ListModules } from './components/ListModules';
-import { Main } from './components/Main';
+import { Main } from './components/Main/Main';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AlgoPreview } from './components/algoPreview';
+import { ModulesList } from './components/ModulesList';
+import { modules } from './utils/listModules';
 
-const sortAlgosList = [
-	{
-		to: 'bubble-sort',
-		algoProps: {
-			title: 'Sortowanie bąbelkowe',
-			description: `Sortowanie bąbelkowe (ang. bubble sort) – prosta metoda sortowania o złożoności czasowej $$O(n^{2})$$ i pamięciowej $$O ( 1 )$$. 
-
-		Polega na porównywaniu dwóch kolejnych elementów i zamianie ich kolejności, jeżeli zaburza ona porządek, w jakim się sortuje tablicę. Sortowanie kończy się, gdy podczas kolejnego przejścia nie dokonano żadnej zmiany.`,
-			type: 'bubbleSort',
-		},
-	},
-
-	{
-		to: 'merge-sort',
-		algoProps: {
-			title: 'Sortowanie przez scalanie',
-			description: 'brak',
-			type: 'mergeSort',
-		},
-	},
-];
 const App = () => {
 	const [toggleDark, setToggleDark] = React.useState(false);
 
@@ -72,32 +52,23 @@ const App = () => {
 						}
 					>
 						<Route path='/strona-glowna' element={<Main />} />
-						<Route path='/moduly' element={<ListModules />}>
-							{/* {sortAlgosList.map((algo) => {
+						<Route path='/moduly' element={<ModulesList />} />
+						{modules.map((module) => {
+							if (module.algoProps.type) {
 								return (
 									<Route
-										key={algo.to}
-										path={algo.to}
+										key={module.to}
+										path={`/moduly/${module.to}`}
 										element={
-											<AlgoPreview {...algo.algoProps} />
+											<AlgoPreview
+												{...module.algoProps}
+											/>
 										}
 									/>
 								);
-							})} */}
-							<Route
-								path='bubble-sort'
-								element={
-									<AlgoPreview
-										{...sortAlgosList[0].algoProps}
-									/>
-								}
-							/>
-
-							<Route
-								path='merge-sort'
-								element={<div>wariat </div>}
-							/>
-						</Route>
+							} else return <></>;
+						})}
+						<Route path='merge-sort' element={<div>wariat </div>} />
 						<Route path='/info' element={<div>info</div>} />
 					</Route>
 				</Routes>
