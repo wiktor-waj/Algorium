@@ -1,14 +1,14 @@
 import BubbleChartOutlinedIcon from '@mui/icons-material/BubbleChartOutlined';
 import InsertChartOutlinedRoundedIcon from '@mui/icons-material/InsertChartOutlinedRounded';
-import ElectricBoltOutlinedIcon from '@mui/icons-material/ElectricBoltOutlined';
-import SchemaOutlinedIcon from '@mui/icons-material/SchemaOutlined';
-import HubOutlinedIcon from '@mui/icons-material/HubOutlined';
-import PolylineOutlinedIcon from '@mui/icons-material/PolylineOutlined';
-import HorizontalSplitOutlinedIcon from '@mui/icons-material/HorizontalSplitOutlined';
-import StackedBarChartOutlinedIcon from '@mui/icons-material/StackedBarChartOutlined';
-import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
-import MoveDownOutlinedIcon from '@mui/icons-material/MoveDownOutlined';
-import LinearScaleOutlinedIcon from '@mui/icons-material/LinearScaleOutlined';
+// import ElectricBoltOutlinedIcon from '@mui/icons-material/ElectricBoltOutlined';
+// import SchemaOutlinedIcon from '@mui/icons-material/SchemaOutlined';
+// import HubOutlinedIcon from '@mui/icons-material/HubOutlined';
+// import PolylineOutlinedIcon from '@mui/icons-material/PolylineOutlined';
+// import HorizontalSplitOutlinedIcon from '@mui/icons-material/HorizontalSplitOutlined';
+// import StackedBarChartOutlinedIcon from '@mui/icons-material/StackedBarChartOutlined';
+// import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
+// import MoveDownOutlinedIcon from '@mui/icons-material/MoveDownOutlined';
+// import LinearScaleOutlinedIcon from '@mui/icons-material/LinearScaleOutlined';
 
 export const modules = [
 	{
