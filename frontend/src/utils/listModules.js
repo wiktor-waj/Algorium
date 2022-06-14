@@ -35,6 +35,7 @@ export const modules = [
 		to: 'merge-sort',
 		algoProps: {
 			title: 'Sortowanie przez wstawianie',
+			type: 'mergeSort',
 			description:
 				'Kolejne elementy wejściowe są ustawiane na odpowiednie miejsca docelowe...',
 		},
