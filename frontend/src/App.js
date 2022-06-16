@@ -6,6 +6,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AlgoPreview } from './components/algoPreview';
 import { ModulesList } from './components/ModulesList';
 import { modules } from './utils/listModules';
+import '@fontsource/roboto';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import AboutInfo from './components/Main/About';
 
 const App = () => {
 	const [toggleDark, setToggleDark] = React.useState(false);
@@ -13,6 +19,7 @@ const App = () => {
 	const algoriumTheme = createTheme({
 		palette: {
 			mode: toggleDark ? 'dark' : 'light',
+			type: toggleDark ? 'dark' : 'light',
 			primary: {
 				light: '#97a7eb',
 				main: '#7d91e7',
@@ -39,6 +46,7 @@ const App = () => {
 	}
 
 	return (
+		<div style={{background: algoriumTheme.palette.background.default}}>
 		<ThemeProvider theme={algoriumTheme}>
 			<Router>
 				<Routes>
@@ -69,11 +77,12 @@ const App = () => {
 							} else return <></>;
 						})}
 						<Route path='merge-sort' element={<div>wariat </div>} />
-						<Route path='/info' element={<div>info</div>} />
+						<Route path='/info' element={<AboutInfo/>} />
 					</Route>
 				</Routes>
 			</Router>
 		</ThemeProvider>
+		</div>
 	);
 };
 
