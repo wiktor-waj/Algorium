@@ -1,0 +1,23 @@
+Index: frontend/src/components/MainMenu.test.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/components/MainMenu.test.js b/frontend/src/components/MainMenu.test.js
+new file mode 100644
+--- /dev/null	(date 1655312537710)
++++ b/frontend/src/components/MainMenu.test.js	(date 1655312537710)
+@@ -0,0 +1,12 @@
++import {fireEvent, render, screen} from '@testing-library/react';
++import React from 'react';
++import MainMenu from "./MainMenu";
++
++describe('testy MainMenu.js' , () => {
++
++    it('should render MainMenu', () =>{
++        // render(<Paper><Grid><Item> <MainMenu /> </Item> </Grid> </Paper>)
++    });
++
++
++});
+\ No newline at end of file
