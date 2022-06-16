@@ -5,7 +5,7 @@ import './Main.css';
 
 export const Main = () => {
 	return (
-		<div className='grid'>
+		<div className='grid' id="main">
 			<div className='g s1'>c1</div>
 			<div className='g s2'>c2</div>
 			<div className='g s3'>c3</div>
