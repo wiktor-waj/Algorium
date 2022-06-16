@@ -68,7 +68,7 @@ export const NavBar = ({ toggleDark, setToggleDark }) => {
 
 	return (
 		<TabContext value={currentTab.toString()}>
-			<Paper elevation={3}>
+			<Paper elevation={3} style={{marginBottom: "15px"}}>
 				<Grid container spacing={2}>
 					<Grid item xs>
 						<Item elevation={0}>

@@ -40,7 +40,7 @@ const AlgoHeader = styled(Typography)({
 
 const AlgoWindow = styled('div')({
 	width: '64%',
-	height: '350px',
+	height: '400px',
 	margin: 'auto',
 	borderRadius: '15px',
 	border: '1px solid #aaa',
@@ -125,9 +125,12 @@ export const AlgoPreview = ({ title, description, type }) => {
 
 	return (
 		<Container component={Box} elevation={3}>
+			<div style={{paddingTop: "10px"}}>
 			<AlgoHeader variant='h5' gutterBottom align='center'>
 				{title}
 			</AlgoHeader>
+			</div>
+			
 			<AlgoWindow>
 				<AlgoVisual {...algoVisualProps} />
 			</AlgoWindow>
@@ -173,7 +176,7 @@ export const AlgoPreview = ({ title, description, type }) => {
 							error={inputNumbersListError}
 							inputRef={inputNumbersEl}
 						/>
-						<Tooltip placement='top' title='Dodaj nowe element'>
+						<Tooltip placement='top' title='Dodaj nowy element'>
 							<IconButton
 								disabled={inputNumbersListError}
 								onClick={handleAddNumbers}
