@@ -46,42 +46,41 @@ const App = () => {
 	}
 
 	return (
-		<div style={{background: algoriumTheme.palette.background.default}}>
-		<ThemeProvider theme={algoriumTheme}>
-			<Router>
-				<Routes>
-					<Route
-						path='/'
-						element={
-							<NavBar
-								toggleDark={toggleDark}
-								setToggleDark={setToggleDark}
-							/>
-						}
-					>
-						<Route path='/strona-glowna' element={<Main />} />
-						<Route path='/moduly' element={<ModulesList />} />
-						{modules.map((module) => {
-							if (module.algoProps.type) {
-								return (
-									<Route
-										key={module.to}
-										path={`/moduly/${module.to}`}
-										element={
-											<AlgoPreview
-												{...module.algoProps}
-											/>
-										}
-									/>
-								);
-							} else return <></>;
-						})}
-						<Route path='merge-sort' element={<div>wariat </div>} />
-						<Route path='/info' element={<AboutInfo/>} />
-					</Route>
-				</Routes>
-			</Router>
-		</ThemeProvider>
+		<div style={{ background: algoriumTheme.palette.background.default }}>
+			<ThemeProvider theme={algoriumTheme}>
+				<Router>
+					<Routes>
+						<Route
+							path='/'
+							element={
+								<NavBar
+									toggleDark={toggleDark}
+									setToggleDark={setToggleDark}
+								/>
+							}
+						>
+							<Route path='/strona-glowna' element={<Main />} />
+							<Route path='/moduly' element={<ModulesList />} />
+							{modules.map((module) => {
+								if (module.algoProps.type) {
+									return (
+										<Route
+											key={module.to}
+											path={`/moduly/${module.to}`}
+											element={
+												<AlgoPreview
+													{...module.algoProps}
+												/>
+											}
+										/>
+									);
+								} else return <></>;
+							})}
+							<Route path='/info' element={<div>info</div>} />
+						</Route>
+					</Routes>
+				</Router>
+			</ThemeProvider>
 		</div>
 	);
 };
