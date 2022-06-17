@@ -51,6 +51,26 @@ export const modules = [
 		),
 		tag: 'Algorytmy sortujące',
 	},
+	{
+		to: 'selection-sort',
+		algoProps: {
+			title: 'Sortowanie przez wybieranie',
+			type: 'selectionSort',
+			description:
+				'Wyszukanie elementa mającego się znaleźć na żądanej pozycji i jego zamiana...',
+		},
+		icon: (
+			<InsertChartOutlinedRoundedIcon
+				sx={{ height: 100, width: 100 }}
+				style={{
+					fill: '#7d91e7',
+					marginLeft: '90px',
+					marginTop: '20px',
+				}}
+			/>
+		),
+		tag: 'Algorytmy sortujące',
+	},
 	// TODO -> Dopasować propsy ponizszych modułów tak jak są wyżej zrobione bubble-sort i merge-sort
 	// {
 	// 	id: 2,
