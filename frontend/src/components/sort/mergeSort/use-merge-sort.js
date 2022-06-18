@@ -107,6 +107,7 @@ export const useMergeSort = () => {
 							prevNum[i] = { ...prevNum[i], color: step.isSorting ? "red" : "black" }
 							setNumbers(prevNum);
 							break;
+						default: break;
 					}
 				}
 
