@@ -1,16 +1,16 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { CardActionArea, Grid } from '@mui/material';
+import { CardActionArea, Grid, Box } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { modules } from '../utils/listModules';
 
-const CardComponent = ({ module }) => {
+const CardComponent = ({ module, disabled }) => {
 	return (
 		<Grid item xs={3} md={2.4} lg={2}>
-			<Card sx={{ maxWidth: 345 }}>
-				<CardActionArea component={Link} to={module.to}>
+			<Card sx={{ maxWidth: 345, opacity: disabled ? '0.5' : '1'}}>
+				<CardActionArea sx={{display: 'flex', flexDirection:'column', jusitfyItems: 'center', pt: '1.5em'}} component={Link} to={module.to} disabled={disabled}>
 					{module.icon}
 					<CardContent>
 						<Typography
@@ -27,9 +27,6 @@ const CardComponent = ({ module }) => {
 							align='center'
 						>
 							{module.tag}
-						</Typography>
-						<Typography variant='body2' align='center'>
-							{module.algoProps.description}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
@@ -49,7 +46,7 @@ export const ModulesList = () => {
 				justifyContent="center"
 			>
 				{modules.map((module) => (
-					<CardComponent key={module.to} module={module} />
+					<CardComponent key={module.to} module={module} disabled={module.disabled} />
 				))}
 			</Grid>
 		</>

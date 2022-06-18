@@ -31,18 +31,18 @@ const NumberColumn = styled(motion.div)((props) => ({
 	height: props.height,
 }));
 
-export const MergeSort = ({ numbers }) => {
+export const SelectionSort = ({ numbers }) => {
 	const constraintsRef = React.useRef(null);
 
 	return (
 		<AlgorithmView >
-			<Container ref={constraintsRef}>
+			<Container  ref={constraintsRef}>
 				{numbers.map((n, i) => {
 					return (
 						<NumberColumn
 							key={uuidv4()}
 							layout
-							initial={{ scale: 0 }}
+							// initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
 							transition={{
 								type: 'spring',
