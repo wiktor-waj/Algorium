@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { CardActionArea, Grid } from '@mui/material';
+import { CardActionArea, Grid, Box } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -9,8 +9,8 @@ import { modules } from '../utils/listModules';
 const CardComponent = ({ module }) => {
 	return (
 		<Grid item xs={3} md={2.4} lg={2}>
-			<Card sx={{ maxWidth: 345 }}>
-				<CardActionArea component={Link} to={module.to}>
+			<Card sx={{ maxWidth: 345}}>
+				<CardActionArea sx={{display: 'flex', flexDirection:'column', jusitfyItems: 'center', pt: '1.5em'}} component={Link} to={module.to}>
 					{module.icon}
 					<CardContent>
 						<Typography

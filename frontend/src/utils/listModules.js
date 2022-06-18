@@ -24,8 +24,6 @@ export const modules = [
 				sx={{ height: 100, width: 100 }}
 				style={{
 					fill: '#7d91e7',
-					marginLeft: '90px',
-					marginTop: '20px',
 				}}
 			/>
 		),
@@ -44,8 +42,6 @@ export const modules = [
 				sx={{ height: 100, width: 100 }}
 				style={{
 					fill: '#7d91e7',
-					marginLeft: '90px',
-					marginTop: '20px',
 				}}
 			/>
 		),

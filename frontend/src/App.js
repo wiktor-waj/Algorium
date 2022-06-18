@@ -76,7 +76,7 @@ const App = () => {
 									);
 								} else return <></>;
 							})}
-							<Route path='/info' element={<div>info</div>} />
+							<Route path='/info' element={<AboutInfo />}/>
 						</Route>
 					</Routes>
 				</Router>
