@@ -19,7 +19,6 @@ import {
 	StopCircle as StopCircleIcon,
 	RotateLeft as ResetIcon,
 	NotStarted as NotStartedIcon,
-	AddCircle as AddCircleIcon,
 	ExpandMore as ExpandMoreIcon,
 	Shuffle as ShuffleIcon,
 } from '@mui/icons-material';
