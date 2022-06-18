@@ -1,7 +1,8 @@
 import BubbleChartOutlinedIcon from '@mui/icons-material/BubbleChartOutlined';
 import InsertChartOutlinedRoundedIcon from '@mui/icons-material/InsertChartOutlinedRounded';
 // import ElectricBoltOutlinedIcon from '@mui/icons-material/ElectricBoltOutlined';
-// import SchemaOutlinedIcon from '@mui/icons-material/SchemaOutlined';
+import SchemaOutlinedIcon from '@mui/icons-material/SchemaOutlined';
+import FlipToFrontIcon from '@mui/icons-material/FlipToFront';
 // import HubOutlinedIcon from '@mui/icons-material/HubOutlined';
 // import PolylineOutlinedIcon from '@mui/icons-material/PolylineOutlined';
 // import HorizontalSplitOutlinedIcon from '@mui/icons-material/HorizontalSplitOutlined';
@@ -17,7 +18,7 @@ export const modules = [
 			title: 'Sortowanie bąbelkowe',
 			type: 'bubbleSort',
 			description:
-				'Porównywane sa dwa kolejne elementy i zamieniane w razie potrzeby...',
+				'Metoda sortowania o złożoności czasowej i pamięciowej . Polega na porównywaniu dwóch kolejnych elementów i zamianie ich kolejności, jeżeli zaburza ona porządek, w jakim się sortuje tablicę. Sortowanie kończy się, gdy podczas kolejnego przejścia nie dokonano żadnej zmiany.',
 		},
 		icon: (
 			<BubbleChartOutlinedIcon
@@ -35,7 +36,7 @@ export const modules = [
 			title: 'Sortowanie przez wstawianie',
 			type: 'mergeSort',
 			description:
-				'Kolejne elementy wejściowe są ustawiane na odpowiednie miejsca docelowe...',
+				'Każdą iterację zaczynamy od wybrania elementu (startując od pierwszego miejsca w tablicy), który będziemy przyrównywać, do elementów znajdujących się na pozycjach poprzedzających. Jeżeli element znajdujący się przed wybranym przez nas elementem jest większy, przesuwamy się o jedno miejsce wstecz.',
 		},
 		icon: (
 			<InsertChartOutlinedRoundedIcon
@@ -53,53 +54,37 @@ export const modules = [
 			title: 'Sortowanie przez wybieranie',
 			type: 'selectionSort',
 			description:
-				'Wyszukanie elementa mającego się znaleźć na żądanej pozycji i jego zamiana...',
+				'Sortowanie przez wybieranie - jedna z prostszych metod sortowania o złożoności O(n^2). Polega na wyszukaniu elementu mającego się znaleźć na żądanej pozycji i zamianie miejscami z tym, który jest tam obecnie. Operacja jest wykonywana dla wszystkich indeksów sortowanej tablicy.',
 		},
 		icon: (
-			<InsertChartOutlinedRoundedIcon
+			<FlipToFrontIcon
 				sx={{ height: 100, width: 100 }}
 				style={{
 					fill: '#7d91e7',
-					marginLeft: '90px',
-					marginTop: '20px',
 				}}
 			/>
 		),
 		tag: 'Algorytmy sortujące',
 	},
 	// TODO -> Dopasować propsy ponizszych modułów tak jak są wyżej zrobione bubble-sort i merge-sort
-	// {
-	// 	id: 2,
-	// 	title: 'Sortowanie szybkie',
-	// 	desc: "Wykorzystywana jest technika 'dziel i zwyciężaj'...",
-	// 	icon: (
-	// 		<ElectricBoltOutlinedIcon
-	// 			sx={{ height: 100, width: 100 }}
-	// 			style={{
-	// 				fill: '#7d91e7',
-	// 				marginLeft: '120px',
-	// 				marginTop: '20px',
-	// 			}}
-	// 		/>
-	// 	),
-	// 	tag: 'Algorytmy sortujące',
-	// },
-	// {
-	// 	id: 3,
-	// 	title: 'Przeszukiwanie wszerz',
-	// 	desc: 'Polega na odwiedzeniu wszystkich osiągalnych wierzchołków z danego wierzchołka.',
-	// 	icon: (
-	// 		<SchemaOutlinedIcon
-	// 			sx={{ height: 100, width: 100 }}
-	// 			style={{
-	// 				fill: '#7d91e7',
-	// 				marginLeft: '120px',
-	// 				marginTop: '20px',
-	// 			}}
-	// 		/>
-	// 	),
-	// 	tag: 'Algorytmy grafowe',
-	// },
+	{
+		disabled: true,
+		to: 'bfs',
+		algoProps: {
+			title: 'Przeszukiwanie wszerz',
+			description: 'Polega na odwiedzeniu wszystkich osiągalnych wierzchołków z danego wierzchołka.',
+			type: 'bfs',
+		},
+		icon: (
+			<SchemaOutlinedIcon
+				sx={{ height: 100, width: 100 }}
+				style={{
+					fill: '#7d91e7',
+				}}
+			/>
+		),
+		tag: 'Algorytmy grafowe',
+	},
 	// {
 	// 	id: 4,
 	// 	title: 'Przeszukiwanie w głąb',

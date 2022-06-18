@@ -23,6 +23,7 @@ import {
 	ExpandMore as ExpandMoreIcon,
 	Shuffle as ShuffleIcon,
 } from '@mui/icons-material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useAlgoSort } from '../../hooks';
 import { useAlgoPreviewForm } from '.';
 
@@ -40,7 +41,7 @@ const AlgoHeader = styled(Typography)({
 
 const AlgoWindow = styled('div')({
 	width: '64%',
-	height: '400px',
+	height: '550px',
 	margin: 'auto',
 	borderRadius: '15px',
 	border: '1px solid #aaa',
@@ -176,13 +177,13 @@ export const AlgoPreview = ({ title, description, type }) => {
 							error={inputNumbersListError}
 							inputRef={inputNumbersEl}
 						/>
-						<Tooltip placement='top' title='Dodaj nowy element'>
+						<Tooltip placement='top' title='Zastosuj'>
 							<IconButton
 								disabled={inputNumbersListError}
 								onClick={handleAddNumbers}
 								size='large'
 							>
-								<AddCircleIcon />
+								<CheckCircleIcon />
 							</IconButton>
 						</Tooltip>
 					</div>

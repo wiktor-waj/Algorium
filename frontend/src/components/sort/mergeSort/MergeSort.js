@@ -36,13 +36,13 @@ export const MergeSort = ({ numbers }) => {
 
 	return (
 		<AlgorithmView >
-			<Container  ref={constraintsRef}>
+			<Container ref={constraintsRef}>
 				{numbers.map((n, i) => {
 					return (
 						<NumberColumn
 							key={uuidv4()}
 							layout
-							// initial={{ scale: 0 }}
+							initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
 							transition={{
 								type: 'spring',
