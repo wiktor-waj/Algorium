@@ -17,4 +17,5 @@ The _Algorium_ project will simplify this learning process via various visualiza
 | _Team Leader_, _Backend_ | _DevOps_ | _Frontend_ | _Frontend_ | _Backend_ | _Tester_ |
 
 
-## Deployed project avilable at [AWS](http://algorium.s3-website.eu-central-1.amazonaws.com/)
+## Deployed project avilable at [AWS]
+Repository has been archived.
